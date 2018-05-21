@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+    - '8'
+dist: trusty
+sudo: required
+notifications:
+  email: false
+before_install: './scripts/pre-install.sh'
+install: ./scripts/install.sh
+script: ./scripts/test.sh

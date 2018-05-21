@@ -1,0 +1,48 @@
+<ion-header>
+	<ion-navbar color="two">
+		<ion-buttons start>
+			<button ion-button (tap)="dismiss()">Close</button>
+		</ion-buttons>
+		<ion-title>{{formType}} {{assetType}}</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<form [formGroup]="form" (ngSubmit)="submit()" *ngIf="!error">
+		<ion-list>
+			<ion-item *ngFor="let property of properties">
+				<ion-label floating>{{property.name}}</ion-label>
+
+				<ion-input [disabled]="property.name == assetIdentifierProperty && formType == 'Update'" *ngIf="property.type == 'String'" type="text" formControlName="{{property.name}}" value="{{property.default}}"></ion-input>
+
+				<ion-checkbox *ngIf="property.type == 'Boolean'" color="secondary" formControlName="{{property.name}}" checked="{{property.default}}"></ion-checkbox>
+
+				<ion-input *ngIf="property.type == 'Integer' || property.type == 'Long'" type="number" formControlName="{{property.name}}" value="{{property.default}}"></ion-input>
+
+				<ion-input *ngIf="property.type == 'Double'" type="number" step="any" formControlName="{{property.name}}" value="{{property.default}}"></ion-input>
+
+				<ion-datetime *ngIf="property.type == 'DateTime'" displayFormat="YYYY-MM-DDTHH:mm:ssTZD" pickerFormat="YYYY-MM-DDTHH:mm:ssTZD" formControlName="{{property.name}}"></ion-datetime>
+
+				<ion-select *ngIf="property.enum == true" formControlName="{{property.name}}">
+					<ion-option *ngFor="let value of property.enumValues" [value]="value">{{value}}</ion-option>
+				</ion-select>
+
+				<ion-textarea *ngIf="property.primitive == false && property.enum == false && !property.array" formControlName="{{property.name}}" value="{{property.default}}"></ion-textarea>
+				<ion-textarea *ngIf="property.primitive == false && property.enum == false && property.array && !property.default" formControlName="{{property.name}}" value="[]"></ion-textarea>
+				<ion-textarea *ngIf="property.primitive == false && property.enum == false && property.array && property.default" formControlName="{{property.name}}" value="{{property.default}}"></ion-textarea>
+
+
+			</ion-item>
+		</ion-list>
+		<button *ngIf="formType == 'Add' && !error" ion-button type="submit" [disabled]="!form.valid || !connected" style="display:block;margin:0 auto;">Add {{assetType}}</button>
+		<button *ngIf="formType == 'Update' && !error" ion-button type="submit" [disabled]="!form.valid || !connected" style="display:block;margin:0 auto;">Update {{assetType}}</button>
+	</form>
+	<ion-card color="danger" *ngIf="error">
+		<ion-card-header>
+			<h1>Error Adding {{assetType}}</h1>
+		</ion-card-header>
+		<ion-card-content>
+			<b>{{error}}</b>
+		</ion-card-content>
+	</ion-card>
+</ion-content>

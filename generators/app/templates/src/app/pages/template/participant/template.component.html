@@ -1,0 +1,72 @@
+<ion-header>
+	<ion-navbar color="three">
+		<ion-buttons start>
+			<button ion-button menuToggle>
+				<ion-icon name="menu"></ion-icon>
+			</button>
+		</ion-buttons>
+		<ion-title>
+			<%= currentParticipant.name %>
+		</ion-title>
+		<ion-buttons end>
+			<button ion-button icon-only (tap)="presentPopover($event)">
+				<ion-icon name="more"></ion-icon>
+			</button>
+		</ion-buttons>
+
+	</ion-navbar>
+	<ion-toolbar>
+		<ion-searchbar placeholder="Search <%=currentParticipant.name%>"(ionInput)="getItems($event)"></ion-searchbar>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-refresher (ionRefresh)="refreshItems($event)">
+		<ion-refresher-content pullingText="Pull to refresh..." refreshingSpinner="circles" refreshingText="Refreshing...">
+		</ion-refresher-content>
+	</ion-refresher>
+	<h1 *ngIf="items.length == 0 && itemsLoaded == true" style="text-align:center;">No <%=currentParticipant.name%> participants found</h1>
+
+	<ion-list>
+		<ion-item-sliding *ngFor="let item of items">
+
+			<ion-item (tap)="viewParticipant(item.<%=currentParticipant.identifier%>)">
+				<div style="display: flex; justify-content: flex-start; flex-direction:row;">
+					<div style="flex:1;flex-grow:1">
+							{{item.<%=currentParticipant.identifier%>}}
+					</div>
+					<div>
+						<ion-icon name="arrow-dropleft"></ion-icon>
+					</div>
+				</div>
+
+			</ion-item>
+
+			<ion-item-options>
+				<button ion-button color="primary" icon-start (tap)="viewParticipant(item.<%=currentParticipant.identifier%>)">
+            		<ion-icon name="eye"></ion-icon>View
+          		</button>
+				<button ion-button color="secondary" icon-start (tap)="updateParticipant(item.<%=currentParticipant.identifier%>)">
+            		<ion-icon name="build"></ion-icon>Update
+          		</button>
+				<button ion-button color="danger" icon-start (tap)="deleteParticipant(item.<%=currentParticipant.identifier%>)">
+            		<ion-icon name="trash"></ion-icon>Delete
+          		</button>
+			</ion-item-options>
+		</ion-item-sliding>
+	</ion-list>
+
+	<ion-fab right bottom>
+		<button ion-fab color="secondary" (tap)="addParticipant()"><ion-icon name="add"></ion-icon></button>
+	</ion-fab>
+</ion-content>
+
+<ion-footer>
+	<!-- <ion-toolbar>
+		<ion-grid>
+			<ion-row>
+				<ion-col col-12 text-center>Add</ion-col>
+			</ion-row>
+		</ion-grid>
+	</ion-toolbar> -->
+</ion-footer>

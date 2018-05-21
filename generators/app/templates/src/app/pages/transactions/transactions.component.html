@@ -1,0 +1,17 @@
+<ion-header>
+	<ion-navbar color="four">
+		<button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+		<ion-title>Transactions</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content>
+	<ion-card>
+		<ion-card-content>These are the different Transactions defined in your business network definition.</ion-card-content>
+	</ion-card>
+	<ion-list>
+		<button ion-item class="transactionButton" *ngFor="let transaction of transactionList" (tap)="transactionTapped($event, transaction)">{{transaction.name}}</button>
+	</ion-list>
+</ion-content>

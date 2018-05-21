@@ -1,0 +1,23 @@
+<ion-header>
+	<ion-navbar color="two">
+		<ion-buttons start>
+			<button ion-button (tap)="dismiss()">Close</button>
+		</ion-buttons>
+		<ion-title>
+			{{assetType}} // {{assetId}}
+		</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content>
+	<ion-list no-lines>
+		<ion-item *ngFor="let key of loadedAssetKeys; let i = index">
+			<h2 text-wrap>{{key}}</h2>
+			<p text-wrap>{{loadedAsset[key] | json}}</p>
+		</ion-item>
+	</ion-list>
+</ion-content>
+
+<ion-footer>
+
+</ion-footer>

@@ -1,0 +1,21 @@
+<ion-header>
+	<ion-navbar color="one">
+		<button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+		<ion-title>Settings</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<h1>Settings</h1>
+	<form [formGroup]="form" (ngSubmit)="setConfig()" *ngIf="!error">
+		<ion-item>
+			<ion-label floating>REST API URL</ion-label>
+			<ion-input type="text" value="{{restApiUrl}}" formControlName="configURL"></ion-input>
+		</ion-item>
+		<br>
+		<button *ngIf="!error" ion-button type="submit" [disabled]="!form.valid" style="display:block;margin:0 auto;">Update Settings</button>
+	</form>
+
+</ion-content>

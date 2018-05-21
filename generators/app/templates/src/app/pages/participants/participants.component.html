@@ -1,0 +1,17 @@
+<ion-header>
+	<ion-navbar color="three">
+		<button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+		<ion-title>Participants</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content>
+	<ion-card>
+		<ion-card-content>These are the different participants defined in your business network definition.</ion-card-content>
+	</ion-card>
+	<ion-list>
+		<button ion-item class="participantButton" *ngFor="let participant of participantList" (tap)="participantTapped($event, participant)">{{participant.name}}</button>
+	</ion-list>
+</ion-content>

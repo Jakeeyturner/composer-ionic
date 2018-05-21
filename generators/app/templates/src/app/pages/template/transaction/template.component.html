@@ -1,0 +1,66 @@
+<ion-header>
+	<ion-navbar color="four">
+		<ion-buttons start>
+			<button ion-button menuToggle>
+				<ion-icon name="menu"></ion-icon>
+			</button>
+		</ion-buttons>
+		<ion-title>
+			<%= currentTransaction.name %>
+		</ion-title>
+		<ion-buttons end>
+			<button ion-button icon-only (tap)="presentPopover($event)">
+				<ion-icon name="more"></ion-icon>
+			</button>
+		</ion-buttons>
+
+	</ion-navbar>
+	<ion-toolbar>
+		<ion-searchbar placeholder="Search <%=currentTransaction.name%>"(ionInput)="getTransactions($event)"></ion-searchbar>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-refresher (ionRefresh)="refreshTransactions($event)">
+		<ion-refresher-content pullingText="Pull to refresh..." refreshingSpinner="circles" refreshingText="Refreshing...">
+		</ion-refresher-content>
+	</ion-refresher>
+	<h1 *ngIf="transactions.length == 0 && transactionsLoaded == true" style="text-align:center;">No <%=currentTransaction.name%> transactions found</h1>
+
+	<ion-list>
+		<ion-item-sliding *ngFor="let transaction of transactions">
+
+			<ion-item (tap)="viewTransaction(transaction.<%=currentTransaction.identifier%>)">
+				<div style="display: flex; justify-content: flex-start; flex-direction:row;">
+					<div style="flex:1;flex-grow:1">
+							{{transaction.<%=currentTransaction.identifier%>}}
+					</div>
+					<div>
+						<ion-icon name="arrow-dropleft"></ion-icon>
+					</div>
+				</div>
+
+			</ion-item>
+
+			<ion-item-options>
+				<button ion-button color="primary" icon-start (tap)="viewTransaction(transaction.<%=currentTransaction.identifier%>)">
+            		<ion-icon name="eye"></ion-icon>View
+          		</button>
+			</ion-item-options>
+		</ion-item-sliding>
+	</ion-list>
+
+	<ion-fab right bottom>
+		<button ion-fab color="secondary" (tap)="addTransaction()"><ion-icon name="add"></ion-icon></button>
+	</ion-fab>
+</ion-content>
+
+<ion-footer>
+	<!-- <ion-toolbar>
+		<ion-grid>
+			<ion-row>
+				<ion-col col-12 text-center>Add</ion-col>
+			</ion-row>
+		</ion-grid>
+	</ion-toolbar> -->
+</ion-footer>

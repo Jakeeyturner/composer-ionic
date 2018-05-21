@@ -1,0 +1,11 @@
+# Node dependencies
+node_modules
+
+# Code testing coverage
+coverage
+
+# Ionic
+.sourcemaps
+platforms
+plugins
+www

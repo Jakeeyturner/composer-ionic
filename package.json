@@ -1,0 +1,44 @@
+{
+  "name": "generator-composer-ionic",
+  "version": "2.0.0",
+  "description": "Generate an Ionic Mobile application using Hyperledger Composer business networks",
+  "author": "Jake Turner",
+  "keywords": [
+    "yeoman generator",
+    "hyperledger composer",
+    "mobile application",
+    "ionic framework"
+  ],
+  "scripts": {
+    "test": "mocha -t 0 test/tests.js"
+  },
+  "dependencies": {
+    "adm-zip": "0.4.7",
+    "chalk": "2.4.0",
+    "composer-client": "~0.19.0",
+    "composer-common": "~0.19.0",
+    "fs-extra": "4.0.2",
+    "path": "0.12.7",
+    "shelljs": "0.7.7",
+    "underscore.string": "3.3.4",
+    "yeoman-assert": "3.1.0",
+    "yeoman-generator": "2.0.1",
+    "yeoman-test": "1.7.0"
+  },
+  "devDependencies": {
+    "@angular/cli": "1.0.0-rc.0",
+    "composer-admin": "~0.19.0",
+    "composer-connector-embedded": "~0.19.0",
+    "eslint": "4.8.0",
+    "karma": "1.7.1",
+    "mocha": "3.4.2",
+    "typings": "2.1.0"
+  },
+  "engines": {
+    "node": ">=8",
+    "npm": ">=5"
+  },
+  "repository": {
+    "type": "git"
+  }
+}

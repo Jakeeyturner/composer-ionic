@@ -1,0 +1,17 @@
+<ion-header>
+	<ion-navbar color="two">
+		<button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+		<ion-title>Assets</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content>
+	<ion-card>
+		<ion-card-content>These are the different Assets defined in your business network definition.</ion-card-content>
+	</ion-card>
+	<ion-list>
+		<button ion-item class="assetButton" *ngFor="let asset of assetList" (tap)="assetTapped($event, asset)">{{asset.name}}</button>
+	</ion-list>
+</ion-content>

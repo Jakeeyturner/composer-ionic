@@ -1,0 +1,24 @@
+<ion-menu [content]="content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <button menuClose ion-item *ngFor="let p of pages" (tap)="openPage(p)">
+			<ion-icon *ngIf="p.title == 'Home'"name="home"></ion-icon>
+			<ion-icon *ngIf="p.title == 'Assets'"name="cube"></ion-icon>
+			<ion-icon *ngIf="p.title == 'Participants'"name="people"></ion-icon>
+			<ion-icon *ngIf="p.title == 'Transactions'"name="cloud-upload"></ion-icon>
+			<ion-icon *ngIf="p.title == 'Settings'"name="settings"></ion-icon>
+		  	 {{p.title}}
+
+		</button>
+	</ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
