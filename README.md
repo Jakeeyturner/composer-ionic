@@ -13,13 +13,16 @@ The composer-ionic code generation tool produces [Ionic framework](https://ionic
 2. [Install Hyperledger Composer development environment](https://hyperledger.github.io/composer/latest/installing/development-tools.html)
 
 
-3. Install the Composer-Ionic code generation tool using the command: `npm install -g generator-composer-ionic`
+3. Install the Ionic CLI and Cordova using the command: `npm install -g ionic cordova`
 
 
-4. Run the code generation tool using the command: `yo composer-ionic`
+4. Install the Composer-Ionic code generation tool using the command: `npm install -g generator-composer-ionic`
 
 
-5. Generated mobile applications can be run in a browser debug mode, by changing into the directory and running the command: `npm start`
+5. Run the code generation tool using the command: `yo composer-ionic`
 
 
-6. Native platform binaries can be built and run on devices using [Apache Cordova](https://ionicframework.com/docs/cli/#using-cordova)
+6. Generated mobile applications can be run in a browser debug mode, by changing into the directory and running the command: `npm start`
+
+
+7. Native platform binaries can be built and run on devices using [Apache Cordova](https://ionicframework.com/docs/cli/#using-cordova)
