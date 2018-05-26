@@ -4,7 +4,7 @@
   "description": "Generate an Ionic Mobile application using Hyperledger Composer business networks",
   "author": "Jake Turner",
   "keywords": [
-    "yeoman generator",
+    "yeoman-generator",
     "hyperledger composer",
     "mobile application",
     "ionic framework"
