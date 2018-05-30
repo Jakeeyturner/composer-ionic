@@ -1,6 +1,6 @@
 {
   "name": "generator-composer-ionic",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Generate an Ionic Mobile application using Hyperledger Composer business networks",
   "author": "Jake Turner",
   "keywords": [
